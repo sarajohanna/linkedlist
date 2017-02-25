@@ -50,32 +50,31 @@ public:
         node->next = newNode;
     }
     
-    void removeBeginning(List list)
+    void removeBeginning()
     {
         Node* nodeToRemove = head;
         head = head->next;
         delete nodeToRemove;
     }
     
-//    ~List()
-//    {
-//        Node* nodeToDelete = head;
-//        Node* nextNode = head;
-//        
-//        while (nodeToDelete != NULL)
-//        {
-//            nextNode = nodeToDelete->next;
-//            if (nodeToDelete)
-//            {
-//                delete nodeToDelete;
-//                nodeToDelete = nextNode;
-//            }
-//        }
-//    }
+    ~List()
+    {
+        Node* nodeToDelete = head;
+        Node* nextNode = head;
+        
+        while (nodeToDelete != NULL)
+        {
+            nextNode = nodeToDelete->next;
+            if (nodeToDelete)
+            {
+                delete nodeToDelete;
+                nodeToDelete = nextNode;
+            }
+        }
+    }
     
 private:
     Node* head;
-
 };
 
 int main(int argc, const char * argv[]) {
@@ -96,18 +95,14 @@ int main(int argc, const char * argv[]) {
    
     list.insertBeginning(node1);
     list.insertBeginning(node2);
-    
     list.printList();
     
-    list.removeBeginning(list);
-    
+    list.removeBeginning();
     list.printList();
     
     list.insertAfter(node1, node3);
     list.insertAfter(node1, node4);
-    
     list.printList();
-    
     
     return 0;
 }
